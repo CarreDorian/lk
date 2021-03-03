@@ -38,21 +38,21 @@ int main(int argc, char **argv) {
       cout << "ear\n";
       if (!argv[++i]) {
         cout << "what else ?\n" << endl;
-      return 0;
+	return 0;
         
       } else if (str_compare(argv[i], "all")) {
         cout << "all\n" << endl;
         command[count++] = 0x3;
         command[count++] = 0x11;
-
+	
       } else if (str_compare(argv[i], "single")) {
         cout << "single\n" << endl;
         command[count++] = 0x4;
         command[count++] = 0x12;
-
+	
       } else {
         cout << "what else ?\n" << endl;
-      return 0;
+	return 0;
       }
 
       // the belt
@@ -76,10 +76,13 @@ int main(int argc, char **argv) {
         cout << "range\n" << endl;
         command[count++] = 0x5;
         command[count++] = 0x14;
-
+	
       } else {
         cout << "what else ?\n" << endl;
-      return 0;      }
+	return 0;      }
+    } else {
+      cout << "what else ?\n" << endl;
+      return 0;
     }
 
     // the motor
@@ -135,25 +138,28 @@ int main(int argc, char **argv) {
       cout << "stop what ?\n" << endl;
       return 0;
     }
+  } else {
+    cout << "lk what ?\n" << endl;
+    return 0;
   }
 
-    // convert parramèters :
-  i = 0;
+  cout << "      convert parramèters : " << hex << uppercase << command[4] << " \n";
+  i = 5;
   if (H) {
-    while (i < command[5]) {
+    while (i - 4 < command[4]) {
       if (!(argv[i])) {
-        cout << "prarrameters forgot";
+        cout << "parrameters forgot\n";
         return 0;
       }
-      command[count++] = hexaStr_to_int(argv[i]);
+      command[count++] = hexaStr_to_int(argv[i++]);
     }
   } else {
-    while (i < command[5]) {
+    while (i - 4 < command[4]) {
       if (!(argv[i])) {
-        cout << "prarrameters forgot";
+        cout << "parrameters forgot\n";
         return 0;
       }
-      command[count++] = intStr_to_int(argv[i]);
+      command[count++] = intStr_to_int(argv[i++]);
     }
   }
 
