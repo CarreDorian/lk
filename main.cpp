@@ -16,37 +16,38 @@ int main(int argc, char **argv) {
   
   int i = 1;
   bool H = false; // if true, convert in hexadécimal, and if false in décimal
- 
+
+    // vérify the flags, and if the help is ask, show it and stop the programme.
+  for (int k = 0; k < argc; k++) 
+    if (argv[k][0] == '-') 
+      if (flags(argv[k], &H)) return 0;
+
 
   // parcing of commandes
-
+// cout << argv[++i] << "     ";
+// i--;
     // the infos
-  if (str_compare(argv[i], "info")) {
-    cout << "info";
+  if (str_compare(argv[i++], "info")) {
     command[count++] = 0x0; // c'est cette ligne qui plante sans raison.
     command[count++] = 0x70;
 
     // the led
   } else if (str_compare(argv[i], "led")) {
-    cout << "led\n";
     if (!argv[++i]) {
       cout << "led what ?\n" << endl;
       return 0;
 
       // the ears 
     } else if (str_compare(argv[i], "ear")) {
-      cout << "ear\n";
       if (!argv[++i]) {
         cout << "what else ?\n" << endl;
-	return 0;
+	      return 0;
         
-      } else if (str_compare(argv[i], "all")) {
-        cout << "all\n" << endl;
+      } else if (str_compare(argv[i++], "all")) {
         command[count++] = 0x3;
         command[count++] = 0x11;
 	
-      } else if (str_compare(argv[i], "single")) {
-        cout << "single\n" << endl;
+      } else if (str_compare(argv[i++], "single")) {
         command[count++] = 0x4;
         command[count++] = 0x12;
 	
@@ -57,29 +58,26 @@ int main(int argc, char **argv) {
 
       // the belt
     } else if (str_compare(argv[i], "belt")) {
-      cout << "belt\n";
       if (!argv[++i]) {
         cout << "what ?\n" << endl;
       return 0;
 
-      } else if (str_compare(argv[i], "all")) {
-        cout << "all\n" << endl;
+      } else if (str_compare(argv[i++], "all")) {
         command[count++] = 0x3;
         command[count++] = 0x13;
 
-      } else if (str_compare(argv[i], "single")) {
-        cout << "single\n" << endl;
+      } else if (str_compare(argv[i++], "single")) {
         command[count++] = 0x4;
         command[count++] = 0x15;
 
-      } else if (str_compare(argv[i], "range")) {
-        cout << "range\n" << endl;
+      } else if (str_compare(argv[i++], "range")) {
         command[count++] = 0x5;
         command[count++] = 0x14;
 	
       } else {
         cout << "what else ?\n" << endl;
-	return 0;      }
+	      return 0;  
+      }
     } else {
       cout << "what else ?\n" << endl;
       return 0;
@@ -87,29 +85,24 @@ int main(int argc, char **argv) {
 
     // the motor
   } else if (str_compare(argv[i], "motor")) {
-    cout << "motor\n";
     if (!argv[++i]) {
       cout << "what ?\n" << endl;
       return 0;
 
-    } else if (str_compare(argv[i], "all")) {
-      cout << "all\n" << endl;
-        command[count++] = 0x2;
+    } else if (str_compare(argv[i++], "all")) {
+      command[count++] = 0x2;
       command[count++] = 0x21;
 
-    } else if (str_compare(argv[i], "duo")) {
-      cout << "duo\n" << endl;
-        command[count++] = 0x4;
+    } else if (str_compare(argv[i++], "duo")) {
+      command[count++] = 0x4;
       command[count++] = 0x22;
 
-    } else if (str_compare(argv[i], "left")) {
-      cout << "left\n" << endl;
-        command[count++] = 0x2;
+    } else if (str_compare(argv[i++], "left")) {
+      command[count++] = 0x2;
       command[count++] = 0x23;
 
-    } else if (str_compare(argv[i], "right")) {
-      cout << "right\n" << endl;
-        command[count++] = 0x2;
+    } else if (str_compare(argv[i++], "right")) {
+      command[count++] = 0x2;
       command[count++] = 0x24;
 
     } else {
@@ -118,52 +111,57 @@ int main(int argc, char **argv) {
     }
 
     // the stop
-  } else if (str_compare(argv[i], "stop")) {
-    cout << "stop\n";
+  } else if (str_compare(argv[i++], "stop")) {
     if (str_compare(argv[++i], "led")) {
-      cout << "led stop\n" << endl;
       command[count++] = 0x0;
       command[count++] = 0xFD;
 
-    } else if (str_compare(argv[i], "motor")) {
-      cout << "motor stop\n";
-        command[count++] = 0x0;
+    } else if (str_compare(argv[i++], "motor")) {
+      command[count++] = 0x0;
       command[count++] = 0xFE;
 
-    } else if (str_compare(argv[i], "robot")) {
-      cout << "robot stop\n" << endl;
+    } else if (str_compare(argv[i++], "robot")) {
+      command[count++] = 0x0;
       command[count++] = 0xFF;
 
     } else {
       cout << "stop what ?\n" << endl;
       return 0;
     }
+
+  } else if (str_compare(argv[i++], "motivator")) {
+    command[count++] = 0x1;
+    command[count++] = 0x50;
+
+  } else if (str_compare(argv[i++], "guidance")) {
+    command[count++] = 0x2;
+    command[count++] = 0x40;
+
   } else {
     cout << "lk what ?\n" << endl;
     return 0;
   }
 
-  cout << "      convert parramèters : " << hex << uppercase << command[4] << " \n";
-  i = 5;
+  cout << "      convert parramèters : " << hex << uppercase << command[4] << " : i_" << i << " : \n";
+  
+  int k = 0;
   if (H) {
-    while (i - 4 < command[4]) {
-      if (!(argv[i])) {
+    while (k++ < command[4]) {
+      if (!(argv[count])) {
         cout << "parrameters forgot\n";
         return 0;
       }
       command[count++] = hexaStr_to_int(argv[i++]);
     }
   } else {
-    while (i - 4 < command[4]) {
-      if (!(argv[i])) {
+    while (k++ < command[4]) {
+      if (!(argv[count])) {
         cout << "parrameters forgot\n";
         return 0;
       }
       command[count++] = intStr_to_int(argv[i++]);
     }
   }
-
-  cout << "\nexit from the parcing ! ";
 
     // show the command :
   command[count] = -1;
