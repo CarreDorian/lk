@@ -157,8 +157,6 @@ int main(int argc, char **argv) {
     }
   }
 
-  command[count++] = 0x8; // c'est cette ligne qui plante sans raison.
-
   cout << "\nexit from the parcing ! ";
 
     // show the command :

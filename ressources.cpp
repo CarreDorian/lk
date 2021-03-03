@@ -63,13 +63,16 @@ int hexaStr_to_int(char *str) {
 
 int intStr_to_int(char *str) {
    int i = 0, nbr = 0, char_nbr;
+   cout << endl << endl << i << " ; ";
    while (str[i] != '\0') {
+       cout << i << " ; ";
       nbr *= 10;
       char_nbr = str[i];
       if (char_nbr >= 48 && char_nbr <= 57) nbr += char_nbr - 48;
       else return (-1);
       i++;
    }
+   cout << endl;
    return nbr;
 }
 
