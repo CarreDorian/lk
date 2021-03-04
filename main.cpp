@@ -19,8 +19,12 @@ int main(int argc, char **argv) {
 
     // vérify the flags, and if the help is ask, show it and stop the programme.
   for (int k = 0; k < argc; k++) 
-    if (argv[k][0] == '-') 
+    if (argv[k][0] == '-') {
       if (flags(argv[k], &H)) return 0;
+      for (int j = k+1; j < argc; j++) 
+        argv[j-1] = argv[j];
+    }
+
 
 
   // parcing of commandes
@@ -156,6 +160,7 @@ int main(int argc, char **argv) {
 
   cout << "      convert parramèters : " << hex << uppercase << command[4] << " : i_" << i << " : \n";
   
+    // convert the str number in int
   int k = 0;
   if (H) {
     while (k++ < command[4]) {
@@ -163,7 +168,11 @@ int main(int argc, char **argv) {
         cout << "parrameters forgot\n";
         return 0;
       }
-      command[count++] = hexaStr_to_int(argv[i++]);
+      command[count] = hexaStr_to_int(argv[i++]);
+      if (command[count++] == -1) {
+        cout << "parrameters " << k << " invalid\n";
+        return 0;
+      }
     }
   } else {
     while (k++ < command[4]) {
@@ -171,7 +180,11 @@ int main(int argc, char **argv) {
         cout << "parrameters forgot\n";
         return 0;
       }
-      command[count++] = intStr_to_int(argv[i++]);
+      command[count] = intStr_to_int(argv[i++]);
+      if (command[count++] == -1) {
+        cout << "parrameters " << k << " invalid\n";
+        return 0;
+      }
     }
   }
 
@@ -183,4 +196,3 @@ int main(int argc, char **argv) {
   return 0;
   cout << argc << endl;
 }
-
