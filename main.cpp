@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 
     // the infos
   if (str_compare(argv[i], "info")) {
-    command[count++] = 0x0; // c'est cette ligne qui plante sans raison.
+    command[count++] = 0x0;
     command[count++] = 0x70;
 
     // the led
@@ -46,28 +46,20 @@ int main(int argc, char **argv) {
         cout << "what else ?\n" << endl;
 	      return 0;
         
-      } else if (str_compare(argv[i], "all")) {
-        command[count++] = 0x3;
-        command[count++] = 0x11;
-	
       } else if (str_compare(argv[i], "single")) {
         command[count++] = 0x4;
         command[count++] = 0x12;
 	
-      } else {
-        cout << "what else ?\n" << endl;
-	return 0;
-      }
+      } else { // the default value modify all the ear led
+        command[count++] = 0x3;
+        command[count++] = 0x11;
+      } 
 
       // the belt
     } else if (str_compare(argv[i], "belt")) {
       if (!argv[++i]) {
         cout << "what ?\n" << endl;
       return 0;
-
-      } else if (str_compare(argv[i], "all")) {
-        command[count++] = 0x3;
-        command[count++] = 0x13;
 
       } else if (str_compare(argv[i], "single")) {
         command[count++] = 0x4;
@@ -77,10 +69,11 @@ int main(int argc, char **argv) {
         command[count++] = 0x5;
         command[count++] = 0x14;
 	
-      } else {
-        cout << "what else ?\n" << endl;
-	      return 0;  
-      }
+      } else { // the default value modify all the belt led
+        command[count++] = 0x3;
+        command[count++] = 0x13;
+
+      } 
     } else {
       cout << "what else ?\n" << endl;
       return 0;
@@ -91,10 +84,6 @@ int main(int argc, char **argv) {
     if (!argv[++i]) {
       cout << "what ?\n" << endl;
       return 0;
-
-    } else if (str_compare(argv[i], "all")) {
-      command[count++] = 0x2;
-      command[count++] = 0x21;
 
     } else if (str_compare(argv[i], "duo")) {
       command[count++] = 0x4;
@@ -108,10 +97,10 @@ int main(int argc, char **argv) {
       command[count++] = 0x2;
       command[count++] = 0x24;
 
-    } else {
-      cout << "what else ?\n" << endl;
-      return 0;
-    }
+    } else { // the default value modify all the motors
+      command[count++] = 0x2;
+      command[count++] = 0x21;
+    } 
 
     // the stop
   } else if (str_compare(argv[i], "stop")) {
@@ -123,13 +112,9 @@ int main(int argc, char **argv) {
       command[count++] = 0x0;
       command[count++] = 0xFE;
 
-    } else if (str_compare(argv[i], "robot")) {
+    } else { // the default value stop all the robot
       command[count++] = 0x0;
       command[count++] = 0xFF;
-
-    } else {
-      cout << "stop what ?\n" << endl;
-      return 0;
     }
 
   } else if (str_compare(argv[i], "motivator")) {

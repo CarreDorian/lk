@@ -4,32 +4,32 @@ using namespace std;
 
 void help() {
     cout << "\n============================== HELP ===============================\n\n";
-    cout << "Using the Leka commands : lk [flags] [commands] [parameters]\n\n";
+    cout << "Using the Leka commands : ./a.out [flags] [commands] [parameters]\n\n";
 
     cout << "____________________________ commands : _____________________________\n\n";
-    cout << "lk led ...                         : change the led color ...\n";
+    cout << "  info                            : show the robot information\n\n";
+    
+    cout << "  led ...                         : change the led color ...\n";
     cout << "       ear ...                              : ... of the ear ...\n";
-    cout << "           all [R + G + B]                  : ... of all the led.\n";
+    cout << "           [R + G + B]                      : ... of all the ear led.\n";
     cout << "           singel [idLed] [R + G + B]       : ... of one led.\n";
     cout << "       belt ...                    : ... of the body ...\n";
-    cout << "           all [R + G +B]                  : ... of all the led.\n";
+    cout << "           [R + G +B]                       : ... of all the body led.\n";
     cout << "           singel [idLed] [R + G + B]       : ... of one led.\n";
     cout << "           range [idFirstLed] [idLastLed] [R + G + B]\n";
     cout << "                                            : ... of all led from firstLed to lastLed.\n\n";
 
     cout << "   motor ...                       : change the motor contrôle ...\n";
-    cout << "         all [speed] [direction]            : ... of all the motor\n";
+    cout << "         [speed] [direction]            : ... of all motors\n";
     cout << "         left [spin] [direction]            : ... of the left motor\n";
     cout << "         right [spin] [direction]           : ... of the right motor\n";
     cout << "         dual [leftSpin] [leftSpeed] [rightSpin] [rightSpeed]\n";
     cout << "                                             : ... of the left motor\n\n";
 
-    cout << "   stop ...                        : switch of ...\n";
-    cout << "        all [speed] [direction]             : ... of all the robot\n";
-    cout << "        left [spin] [direction]             : ... of the motor\n";
-    cout << "        right [spin] [direction]            : ... of the led\n";
-    cout << "        dual [leftSpin] [leftSpeed] [rightSpin] [rightSpeed]\n";
-    cout << "                                            : ... of the left motor ...\n";
+    cout << "   stop ...                        : stop ...\n";
+    cout << "        <nothing>                           : ... all the robot\n";
+    cout << "        led                                 : ... all leds\n";
+    cout << "        motor                               : ... all motors\n";
 
     cout << "_____________________________ flags : ______________________________\n\n";
     cout << "   -h, --help                     Show the help page on the CLI ised\n";
