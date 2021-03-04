@@ -8,7 +8,7 @@ void help() {
 
     cout << "____________________________ commands : _____________________________\n\n";
     cout << "  info                            : show the robot information\n\n";
-    
+
     cout << "  led ...                         : change the led color ...\n";
     cout << "       ear ...                              : ... of the ear ...\n";
     cout << "           [R + G + B]                      : ... of all the ear led.\n";
@@ -76,7 +76,7 @@ int intStr_to_int(char *str) {
     // prise en charge des drapeaux.
     // prend en parramètres l'entièretée du parramètre d'appel de la fonction (argv[i]).
     // renvoie 1 si l'aide doit être afficher, afin de stoper le programme.
-int flags(char *str, bool *H) {
+bool flags(char *str, bool *H) {
     int j = 1;
     if (str[1] == '-') {
         if (str_compare(&str[2], "hexa") || str_compare(&str[2], "hexadécimal")) (*H) = 1;
@@ -96,7 +96,7 @@ int flags(char *str, bool *H) {
         }
         j++;
     }
-    return 0;
+    return false;
 }
     
 

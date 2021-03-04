@@ -104,7 +104,11 @@ int main(int argc, char **argv) {
 
     // the stop
   } else if (str_compare(argv[i], "stop")) {
-    if (str_compare(argv[++i], "led")) {
+    if (!(argv[++i])) { // the default value stop all the robot
+      command[count++] = 0x0;
+      command[count++] = 0xFF;
+    
+    } else if (str_compare(argv[++i], "led")) {
       command[count++] = 0x0;
       command[count++] = 0xFD;
 
