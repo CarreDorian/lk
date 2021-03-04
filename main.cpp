@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
         cout << i << " : parrameters forgot\n";
         return 0;
       }
-      command[count] = hexaStr_to_int(argv[++i]);
+      command[count] = hexaStr_to_int(argv[i]);
       if (command[count++] == -1) {
         cout << "parrameters " << k << " invalid\n";
         return 0;
@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
         cout << i << " : parrameters forgot\n";
         return 0;
       }
-      command[count] = intStr_to_int(argv[++i]);
+      command[count] = intStr_to_int(argv[i]);
       if (command[count++] == -1) {
         cout << "parrameters " << k << " invalid\n";
         return 0;
