@@ -24,12 +24,12 @@ int main(int argc, char **argv) {
 
 
   // parcing of commandes
-// cout << argv[++i] << "     ";
-// i--;
+
     // the infos
-  if (str_compare(argv[i++], "info")) {
+  if (str_compare(argv[i], "info")) {
     command[count++] = 0x0; // c'est cette ligne qui plante sans raison.
     command[count++] = 0x70;
+    i++;
 
     // the led
   } else if (str_compare(argv[i], "led")) {
@@ -43,13 +43,15 @@ int main(int argc, char **argv) {
         cout << "what else ?\n" << endl;
 	      return 0;
         
-      } else if (str_compare(argv[i++], "all")) {
+      } else if (str_compare(argv[i], "all")) {
         command[count++] = 0x3;
         command[count++] = 0x11;
+        i++;
 	
-      } else if (str_compare(argv[i++], "single")) {
+      } else if (str_compare(argv[i], "single")) {
         command[count++] = 0x4;
         command[count++] = 0x12;
+        i++;
 	
       } else {
         cout << "what else ?\n" << endl;
@@ -62,17 +64,20 @@ int main(int argc, char **argv) {
         cout << "what ?\n" << endl;
       return 0;
 
-      } else if (str_compare(argv[i++], "all")) {
+      } else if (str_compare(argv[i], "all")) {
         command[count++] = 0x3;
         command[count++] = 0x13;
+        i++;
 
-      } else if (str_compare(argv[i++], "single")) {
+      } else if (str_compare(argv[i], "single")) {
         command[count++] = 0x4;
         command[count++] = 0x15;
+        i++;
 
-      } else if (str_compare(argv[i++], "range")) {
+      } else if (str_compare(argv[i], "range")) {
         command[count++] = 0x5;
         command[count++] = 0x14;
+        i++;
 	
       } else {
         cout << "what else ?\n" << endl;
@@ -89,21 +94,25 @@ int main(int argc, char **argv) {
       cout << "what ?\n" << endl;
       return 0;
 
-    } else if (str_compare(argv[i++], "all")) {
+    } else if (str_compare(argv[i], "all")) {
       command[count++] = 0x2;
       command[count++] = 0x21;
+      i++;
 
-    } else if (str_compare(argv[i++], "duo")) {
+    } else if (str_compare(argv[i], "duo")) {
       command[count++] = 0x4;
       command[count++] = 0x22;
+      i++;
 
-    } else if (str_compare(argv[i++], "left")) {
+    } else if (str_compare(argv[i], "left")) {
       command[count++] = 0x2;
       command[count++] = 0x23;
+      i++;
 
-    } else if (str_compare(argv[i++], "right")) {
+    } else if (str_compare(argv[i], "right")) {
       command[count++] = 0x2;
       command[count++] = 0x24;
+      i++;
 
     } else {
       cout << "what else ?\n" << endl;
@@ -111,18 +120,21 @@ int main(int argc, char **argv) {
     }
 
     // the stop
-  } else if (str_compare(argv[i++], "stop")) {
+  } else if (str_compare(argv[i], "stop")) {
     if (str_compare(argv[++i], "led")) {
       command[count++] = 0x0;
+        i++;
       command[count++] = 0xFD;
 
-    } else if (str_compare(argv[i++], "motor")) {
+    } else if (str_compare(argv[i], "motor")) {
       command[count++] = 0x0;
       command[count++] = 0xFE;
+        i++;
 
-    } else if (str_compare(argv[i++], "robot")) {
+    } else if (str_compare(argv[i], "robot")) {
       command[count++] = 0x0;
       command[count++] = 0xFF;
+        i++;
 
     } else {
       cout << "stop what ?\n" << endl;
