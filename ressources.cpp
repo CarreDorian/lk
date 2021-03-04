@@ -29,7 +29,11 @@ void help() {
     cout << "   stop ...                        : stop ...\n";
     cout << "        <nothing>                           : ... all the robot\n";
     cout << "        led                                 : ... all leds\n";
-    cout << "        motor                               : ... all motors\n";
+    cout << "        motor                               : ... all motors\n\n";
+
+    cout << "   motivator ...                   : launch motivators\n\n";
+
+    cout << "   guidance ...                    : launch guidances\n\n";
 
     cout << "_____________________________ flags : ______________________________\n\n";
     cout << "   -h, --help                     Show the help page on the CLI ised\n";
