@@ -133,8 +133,6 @@ int main(int argc, char **argv) {
     cout << "lk what ?\n" << endl;
     return 0;
   }
-
-  cout << "      convert parramèters : " << hex << uppercase << command[4] << " : i_" << i << " : \n";
   
     // convert the str number in int
   int k = 0;
