@@ -7,12 +7,12 @@ void help() {
     cout << "Using the Leka commands : ./a.out [flags] [commands] [parameters]\n\n";
 
     cout << "____________________________ commands : _____________________________\n\n";
-    cout << "  info                            : show the robot information\n\n";
+    cout << "  info                            : show the robot informations\n\n";
 
     cout << "  led ...                         : change the led color ...\n";
     cout << "       ear ...                              : ... of the ear ...\n";
     cout << "           [R + G + B]                      : ... of all the ear led.\n";
-    cout << "           singel [idLed] [R + G + B]       : ... of one led.\n";
+    cout << "           singel [idLed] [R + G + B]       : ... of one led.\n\n";
     cout << "       belt ...                    : ... of the body ...\n";
     cout << "           [R + G +B]                       : ... of all the body led.\n";
     cout << "           singel [idLed] [R + G + B]       : ... of one led.\n";
@@ -20,11 +20,11 @@ void help() {
     cout << "                                            : ... of all led from firstLed to lastLed.\n\n";
 
     cout << "   motor ...                       : change the motor contrôle ...\n";
-    cout << "         [speed] [direction]            : ... of all motors\n";
+    cout << "         [speed] [direction]                : ... of all motors\n";
     cout << "         left [spin] [direction]            : ... of the left motor\n";
     cout << "         right [spin] [direction]           : ... of the right motor\n";
     cout << "         duo [leftSpin] [leftSpeed] [rightSpin] [rightSpeed]\n";
-    cout << "                                             : ... of the left motor\n\n";
+    cout << "                                            : ... of the left motor\n\n";
 
     cout << "   stop ...                        : stop ...\n";
     cout << "        <nothing>                           : ... all the robot\n";
