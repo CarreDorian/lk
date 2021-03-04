@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
       // the ears 
     } else if (str_compare(argv[i], "ear")) {
       if (!argv[++i]) {
-        cout << "what else ?\n" << endl;
+        cout << "ear what ?\n" << endl;
 	      return 0;
         
       } else if (str_compare(argv[i], "single")) {
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
       // the belt
     } else if (str_compare(argv[i], "belt")) {
       if (!argv[++i]) {
-        cout << "what ?\n" << endl;
+        cout << "belt ?\n" << endl;
       return 0;
 
       } else if (str_compare(argv[i], "single")) {
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
     // the motor
   } else if (str_compare(argv[i], "motor")) {
     if (!argv[++i]) {
-      cout << "what ?\n" << endl;
+      cout << "motor what ?\n" << endl;
       return 0;
 
     } else if (str_compare(argv[i], "duo")) {

@@ -23,7 +23,7 @@ void help() {
     cout << "         [speed] [direction]            : ... of all motors\n";
     cout << "         left [spin] [direction]            : ... of the left motor\n";
     cout << "         right [spin] [direction]           : ... of the right motor\n";
-    cout << "         dual [leftSpin] [leftSpeed] [rightSpin] [rightSpeed]\n";
+    cout << "         duo [leftSpin] [leftSpeed] [rightSpin] [rightSpeed]\n";
     cout << "                                             : ... of the left motor\n\n";
 
     cout << "   stop ...                        : stop ...\n";
